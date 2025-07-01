@@ -60,19 +60,20 @@ const LineChart = ({
               />
             </linearGradient>
           </defs>
-          {Object.keys(data[0])
-            .filter((k) => k !== "x")
-            .map((k) => (
-              <Area
-                key={k}
-                dataKey={k}
-                type="natural"
-                fill="url(#fillDesktop)"
-                fillOpacity={0.4}
-                stroke="var(--color-desktop)"
-                stackId="a"
-              />
-            ))}
+          {data.length > 0 &&
+            Object.keys(data[0])
+              .filter((k) => k !== "x")
+              .map((k) => (
+                <Area
+                  key={k}
+                  dataKey={k}
+                  type="natural"
+                  fill="url(#fillDesktop)"
+                  fillOpacity={0.4}
+                  stroke="var(--color-desktop)"
+                  stackId="a"
+                />
+              ))}
         </AreaChart>
       </ChartContainer>
     </div>

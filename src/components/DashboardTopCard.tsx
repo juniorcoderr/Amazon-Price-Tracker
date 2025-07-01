@@ -1,7 +1,17 @@
 import LineChart from "./LineChart";
 import { Card } from "./ui/card";
 
-const DashboardTopCard = ({ title = "Price", value = "₹499.00" }) => {
+type ChartData = { x: string; rating: number }[];
+
+const DashboardTopCard = ({
+  title = "Price",
+  value = "₹499.00",
+  data,
+}: {
+  title?: string;
+  value?: string;
+  data?: ChartData;
+}) => {
   return (
     <Card className="pt-4 pb-0">
       <div className="flex justify-between p-0 relative">
@@ -11,9 +21,7 @@ const DashboardTopCard = ({ title = "Price", value = "₹499.00" }) => {
           <span className="font-bold">{value}</span>
         </div>
         <div className="grow h-24 overflow-hidden rounded-b-xl">
-          <div className="-mx-3">
-            <LineChart />
-          </div>
+          <div className="-mx-3">{data && <LineChart data={data} />}</div>
         </div>
       </div>
     </Card>
