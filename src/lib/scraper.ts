@@ -17,10 +17,32 @@ export async function scrapeAmazonProduct(productId: string) {
   const title = $("#productTitle").text().trim();
   const img = $("#imgTagWrapperId img").attr("src") ?? "";
 
-  const priceText =
-    $(".a-price .a-offscreen").first().text().trim() ||
-    $("#priceblock_dealprice").text().trim() ||
-    $("#priceblock_ourprice").text().trim();
+  // --- Multiple selectors to handle different categories ---
+  const priceSelectors = [
+    "#priceblock_dealprice", // Deals
+    "#priceblock_ourprice", // Regular price
+    "#priceblock_saleprice", // Sale price
+    "#corePrice_feature_div .a-offscreen", // New UI core price
+    "#snsPrice .a-offscreen", // Subscribe & Save
+    "#actualPriceValue .a-offscreen", // Alternate price block
+    ".apexPriceToPay .a-offscreen", // Used in some mobiles
+    ".a-price .a-offscreen", // General fallback
+    ".a-price .a-offscreen span", // Extra fallback
+    "span.priceToPay .a-offscreen", // Shoes, variants
+    ".a-section .a-spacing-small .a-color-price", // Deals or offers
+    "#usedPrice .a-color-price", // Used products
+    "#newBuyBoxPrice", // New buy box
+    "#tp_price_block_total_price_ww", // Total price block (e.g. electronics)
+  ];
+
+  let priceText = "";
+  for (const selector of priceSelectors) {
+    const found = $(selector).first().text().trim();
+    if (found) {
+      priceText = found;
+      break;
+    }
+  }
 
   const cleanedPriceText = priceText.replace(/[₹,]/g, "").trim();
   const price = parseInt(cleanedPriceText, 10) || 0;

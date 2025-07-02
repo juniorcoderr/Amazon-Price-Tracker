@@ -35,7 +35,7 @@ const LineChart = ({
   } satisfies ChartConfig;
 
   return (
-    <div className="border-red-400 w-full -my-2">
+    <div className="border-red-400 w-full h-35">
       <ChartContainer config={chartConfig}>
         <AreaChart
           accessibilityLayer

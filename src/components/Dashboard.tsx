@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 import DashboardProductCard from "./DashboardProductCard";
-import DashboardTopCard from "./DashboardTopCard";
+//import DashboardTopCard from "./DashboardTopCard";
 import { prisma } from "@/lib/prisma";
 import { groupBy, sum } from "lodash";
 
@@ -44,9 +44,9 @@ const Dashboard = async () => {
     <div className="col-span-9">
       <h1 className="font-bold my-2">Dashboard</h1>
       <div className="w-full grid grid-cols-3 gap-4">
-        <DashboardTopCard title="Price" value="₹499.00" />
+        {/* <DashboardTopCard title="Price" value="₹499.00" />
         <DashboardTopCard title="Reviews" value="4.8" data={reviewsAvgs} />
-        <DashboardTopCard title="Rank" value="146" />
+        <DashboardTopCard title="Rank" value="146" /> */}
       </div>
       <div className="grid grid-cols-2 gap-4 mt-4">
         {products.map((product) => (

@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { addProduct } from "@/actions/productActions";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
+import SubmitButton from "@/components/SubmitButton";
 
 const page = () => {
   return (
@@ -31,7 +31,7 @@ const page = () => {
             placeholder="Enter product ID, example: B081F1Z9Z7"
           />
           <div className="flex justify-center mt-4">
-            <Button type="submit">Add product</Button>
+            <SubmitButton />
           </div>
         </form>
       </div>
