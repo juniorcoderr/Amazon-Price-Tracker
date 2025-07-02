@@ -24,7 +24,9 @@ const DashboardProductCard = ({
         </div>
         <div className="relative grow -mb-4 flex items-end">
           <div className="absolute w-full top-0">
-            <h3 className="font-bold">AMZON</h3>
+            <h3 className="font-bold overflow-hidden">
+              {product.title.substring(0, 35)}
+            </h3>
             <h4>₹{product.price}</h4>
             <h5 className="text-xs text-gray-600">
               {" "}
