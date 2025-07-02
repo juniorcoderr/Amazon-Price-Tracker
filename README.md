@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Fullstack Amazon Price Tracker
 
-## Getting Started
+A complete full-stack Amazon Price Tracker application built using modern technologies like **Next.js 15.2 (App Router)**, **Tailwind CSS**, **Prisma (PostgreSQL)**, and **Scraperapi**. This app allows users to track prices of Amazon products, receive notifications when prices drop, and view rich data visualizations of product trends — all in a sleek, responsive UI.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🔍 Project Overview
+
+This project is designed to help users monitor Amazon product prices over time and get notified when a product drops below its average price. It is built with scalability, modularity, and performance in mind, using server components and the new Next.js App Router architecture.
+
+---
+
+## 🧰 Tech Stack
+
+| Category           | Technology                                         |
+| ------------------ | -------------------------------------------------- |
+| **Frontend**       | Next.js 15.2 (App Router), Tailwind CSS, shadcn/ui |
+| **Backend**        | Node.js, Prisma ORM                                |
+| **Database**       | PostgreSQL                                         |
+| **Authentication** | NextAuth.js with Google OAuth                      |
+| **Web Scraping**   | Scraper API                                        |
+| **Charts**         | Recharts                                           |
+| **Cron Jobs**      | Node Cron (for daily scraping)                     |
+| **Deployment**     | Vercel                                             |
+
+---
+
+## ✨ Key Features
+
+### ✅ Authentication & User Management
+
+* Login via Google using **NextAuth.js**
+* Secure session handling
+* Products are user-specific and private
+
+### 📦 Product Management
+
+* Add Amazon products manually using product IDs
+* Automatically scrape and store product data (title, image, rating, reviews, price)
+
+### 📈 Dashboard with Visual Insights
+
+* Display average price, reviews, and ranking across all tracked products
+* View **line charts** showing price history
+* Responsive, clean UI built with **Tailwind CSS** and **shadcn/ui components**
+
+### 🔔 Price Drop Notifications
+
+* Automatically notify users via dashboard when a price drops
+* Notifications include current price, previous price, and product info
+
+### ⚙️ Automated Price Scraping
+
+* Scheduled **cron jobs** to fetch latest product data daily (e.g., 8 AM)
+* Efficient scraping powered by **Scraper API**
+
+---
+
+## 🗂️ Project Structure (Simplified)
+
+```
+📦 app/
+ ┣ 📂 dashboard/         → Main user dashboard with charts
+ ┣ 📂 auth/              → Login and session handling
+ ┗ 📂 api/               → Route handlers for scraping and DB actions
+
+📦 components/           → Reusable UI components (Cards, Charts, Sidebar)
+📦 lib/                  → Custom scraping logic and utilities
+📦 prisma/               → Prisma schema and DB config
+📦 actions/              → Server actions (e.g., add product, send notification)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To run this project locally, you need a `.env.local` file with:
 
-## Learn More
+```env
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+DATABASE_URL=postgresql://...
+SCRAPER_API_KEY=
+NEXTAUTH_SECRET=
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Install dependencies
+npm install
 
-## Deploy on Vercel
+# Generate Prisma client
+npx prisma generate
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Push DB schema
+npx prisma db push
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Start development server
+npm run dev
+```
+
+---
+
+## 🧪 Future Enhancements
+
+* ✅ Add user dashboard with filters & sorting
+* 📦 Browser extension for 1-click product tracking
+* 📉 Predictive analytics (price trends)
+* 📱 Mobile-first UI enhancements
+* 🔄 Webhooks for real-time updates
+
+---
+
+## 🤝 Contributions
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
